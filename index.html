@@ -275,10 +275,14 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 .env .letter .caps{font-size:9px;color:var(--gold)}
 .env .front{background:linear-gradient(160deg,#8a1a26,#6a1019);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);z-index:2;box-shadow:inset 0 0 0 1px #c9963f55}
 .env .flap{background:linear-gradient(180deg,#9a2430,#7d1420);clip-path:polygon(0 0,100% 0,50% 56%);transform-origin:50% 0;transition:transform .8s cubic-bezier(.6,0,.3,1), z-index 0s .4s;z-index:3}
-.env .seal{position:absolute;left:50%;top:52%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;z-index:4;display:grid;place-items:center;
+.env .wax{position:absolute;left:50%;top:52%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;z-index:4;display:grid;place-items:center;
   background:radial-gradient(circle at 35% 30%,#f6dc8b,#d6a64c 45%,#9a6a1c);box-shadow:0 0 0 4px #c9963f55,0 6px 16px #0006;font-family:var(--script);font-size:19px;color:#5a0d16;animation:breathe2 1.8s ease-in-out infinite;transition:transform .5s, opacity .5s}
 @keyframes breathe2{0%,100%{box-shadow:0 0 0 4px #c9963f55,0 6px 16px #0006,0 0 0 0 #e9c46a99}50%{box-shadow:0 0 0 4px #c9963f55,0 6px 16px #0006,0 0 0 14px #e9c46a00}}
-.env.open .seal{transform:scale(1.6) rotate(25deg);opacity:0;pointer-events:none}
+.env.open .wax{transform:scale(1.6) rotate(25deg);opacity:0;pointer-events:none}
+.env{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.env.open{cursor:default}
+.env-hint{font-style:italic;color:var(--muted);font-size:.95em;margin-top:4px;transition:opacity .5s}
+.env-hint.hide{opacity:0}
 .env.open .flap{transform:rotateX(180deg);z-index:0}
 .env.open .letter{transform:translateY(-58%)}
 
@@ -450,7 +454,8 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
   <div class="wrap center">
 <div class="quest" id="q-envelope" data-total="1">
   <div class="q-card">
-    <div class="env" id="env"><div class="back"></div><div class="letter"><div class="caps">Save the dates</div><div class="script">15 &amp; 16 Nov</div><div class="caps">2026</div></div><div class="front"></div><div class="flap"></div><span class="seal" id="sealBtn">S&amp;K</span></div>
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Open the invitation"><div class="back"></div><div class="letter"><div class="caps">Save the dates</div><div class="script">15 &amp; 16 Nov</div><div class="caps">2026</div></div><div class="front"></div><div class="flap"></div><span class="wax" id="sealBtn">S&amp;K</span></div>
+    <p class="env-hint" id="envHint">Tap the seal to open</p>
   </div>
 </div>
 <div class="locked-content">
@@ -698,7 +703,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
         await wait(480);
       }
     },
-    async envelope(){ await wait(400); $('#env').classList.add('open'); sfx.chime(); await wait(1500); },
     async akshathai(){
       const pl = $('#plateBtn'), c = $('#akCouple');
       for (let i = 0; i < 5; i++) {
@@ -714,7 +718,14 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     await scenes[e.target.id.slice(2)]();
     if (!reduce) { sfx.chime(); const [x, y] = centre(e.target); burst(x, y, innerWidth < 700 ? 34 : 50, ['jasmine', 'rose', 'marigold']); }
   }), { threshold: 0.55 });
-  const watchScenes = () => $$('.quest').forEach(q => { sceneIO.unobserve(q); sceneIO.observe(q); });
+  function openEnvelope(){
+    const env = $('#env'); if (env.classList.contains('open')) return;
+    env.classList.add('open'); $('#envHint').classList.add('hide'); sfx.chime();
+    setTimeout(() => { if (!reduce) { const [x, y] = centre(env); burst(x, y, innerWidth < 700 ? 34 : 50, ['jasmine', 'rose', 'marigold']); } }, 900);
+  }
+  $('#env').addEventListener('click', openEnvelope);
+  $('#env').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); } });
+  const watchScenes = () => $$('.quest:not(#q-envelope)').forEach(q => { sceneIO.unobserve(q); sceneIO.observe(q); });
 
   /* countdown */
   const target = new Date('2026-11-16T06:00:00+05:30').getTime();
