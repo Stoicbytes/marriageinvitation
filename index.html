@@ -248,33 +248,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 
 
 /* ---------- QUESTS ---------- */
-#hud{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top));transform:translate(-50%,-140%);z-index:45;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#f9ecd4ee;border:1.5px solid var(--gold);box-shadow:0 8px 22px #4a2a1a33;transition:transform .7s cubic-bezier(.2,.7,.2,1);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-#hud.show{transform:translate(-50%,0)}
-#hud .lbl{font-family:var(--caps);font-size:10px;letter-spacing:.16em;color:var(--maroon);margin:0 4px}
-#hud button{width:30px;height:30px;border-radius:50%;border:1px solid #b07a2a88;background:var(--paper);font-size:15px;line-height:1;display:grid;place-items:center;cursor:pointer;filter:grayscale(1);opacity:.55;transition:.4s;padding:0}
-#hud button.next{filter:none;opacity:1;animation:hudPulse 1.6s infinite}
-#hud button.done{filter:none;opacity:1;background:linear-gradient(135deg,#e9c46a,#c9963f);border-color:#b07a2a}
-@keyframes hudPulse{0%,100%{box-shadow:0 0 0 0 #b07a2a77}50%{box-shadow:0 0 0 7px #b07a2a00}}
-#hud .cnt{font-family:var(--caps);font-size:11px;color:var(--maroon);min-width:26px;text-align:center}
-
-.q-locked .locked-content{display:none}
-.quest{display:none}
-.q-locked .quest{display:block}
-.q-card{position:relative;max-width:440px;margin:0 auto;padding:30px 22px 22px;text-align:center;background:var(--paper-l);border:1.5px solid var(--gold);border-radius:180px 180px 18px 18px;box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 26px 50px #7a5a3e2e;transition:opacity .6s, transform .6s}
-.quest.leaving .q-card{opacity:0;transform:scale(.9)}
-.q-step{font-family:var(--caps);font-size:10.5px;letter-spacing:.26em;color:var(--gold);margin-top:18px}
-.q-title{font-family:var(--script);font-weight:400;font-size:clamp(38px,9vw,50px);color:var(--maroon);line-height:1.1;margin:2px 0 6px}
-.q-stage{position:relative;display:grid;place-items:center;margin:8px auto;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.q-hint{font-style:italic;color:var(--muted);font-size:.95em;line-height:1.4}
-.q-meter{width:70%;height:6px;margin:14px auto 4px;border-radius:9px;background:#b07a2a26;overflow:hidden}
-.q-meter i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#c9963f,#e9c46a);transition:width .45s cubic-bezier(.2,.7,.2,1)}
-.q-skip{margin-top:8px;border:0;background:none;color:var(--muted);font-family:var(--caps);font-size:10px;letter-spacing:.2em;text-decoration:underline;cursor:pointer;padding:8px}
-.quest.done .q-hint,.quest.done .q-skip{visibility:hidden}
-.quest.done .q-title{animation:pop .6s cubic-bezier(.2,.7,.2,1.4)}
-@keyframes pop{from{transform:scale(.6);opacity:0}}
-.locked-content.unlocked{animation:unlock 1s cubic-bezier(.2,.7,.2,1)}
-@keyframes unlock{from{opacity:0;transform:translateY(30px) scale(.97)}}
-
+.q-card{position:relative;max-width:440px;margin:0 auto 40px;padding:44px 22px 30px;text-align:center;background:var(--paper-l);border:1.5px solid var(--gold);border-radius:180px 180px 18px 18px;box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 26px 50px #7a5a3e2e;transition:opacity .6s, transform .6s}
 /* bell */
 .big-bell{width:84px;height:156px;transform-origin:50% 0;overflow:visible}
 .big-bell.ring{animation:bigRing 1s ease-out}
@@ -301,7 +275,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 .env .letter .caps{font-size:9px;color:var(--gold)}
 .env .front{background:linear-gradient(160deg,#8a1a26,#6a1019);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);z-index:2;box-shadow:inset 0 0 0 1px #c9963f55}
 .env .flap{background:linear-gradient(180deg,#9a2430,#7d1420);clip-path:polygon(0 0,100% 0,50% 56%);transform-origin:50% 0;transition:transform .8s cubic-bezier(.6,0,.3,1), z-index 0s .4s;z-index:3}
-.env .seal{position:absolute;left:50%;top:52%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;z-index:4;border:0;cursor:pointer;
+.env .seal{position:absolute;left:50%;top:52%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;z-index:4;display:grid;place-items:center;
   background:radial-gradient(circle at 35% 30%,#f6dc8b,#d6a64c 45%,#9a6a1c);box-shadow:0 0 0 4px #c9963f55,0 6px 16px #0006;font-family:var(--script);font-size:19px;color:#5a0d16;animation:breathe2 1.8s ease-in-out infinite;transition:transform .5s, opacity .5s}
 @keyframes breathe2{0%,100%{box-shadow:0 0 0 4px #c9963f55,0 6px 16px #0006,0 0 0 0 #e9c46a99}50%{box-shadow:0 0 0 4px #c9963f55,0 6px 16px #0006,0 0 0 14px #e9c46a00}}
 .env.open .seal{transform:scale(1.6) rotate(25deg);opacity:0;pointer-events:none}
@@ -313,17 +287,10 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 .ak-couple{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:110px;height:110px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fbf1de,#f1dbb2);border:1.5px solid var(--gold);box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66;font-family:var(--script);font-size:38px;color:var(--maroon)}
 .ak-couple.blessed{animation:glowC 1s ease-out}
 @keyframes glowC{0%{box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 0 0 0 #ffd77a}50%{box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 0 40px 18px #ffd77acc}}
-.ak-plate{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:150px;height:60px;border:0;background:none;cursor:pointer;padding:0}
+.ak-plate{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:150px;height:60px}
 .ak-plate.toss{animation:toss .35s ease-out}
 @keyframes toss{40%{transform:translateX(-50%) translateY(-12px) rotate(-6deg)}}
 
-/* finale */
-#finale{position:fixed;inset:0;z-index:55;display:grid;place-items:center;padding:20px;background:#4a2a1a66;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-#finale[hidden]{display:none}
-#finale .f-card{max-width:380px;width:100%;text-align:center;padding:34px 24px 26px;background:var(--paper-l);border:1.5px solid var(--gold);border-radius:180px 180px 18px 18px;box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a,0 30px 60px #0005;animation:pop .7s cubic-bezier(.2,.7,.2,1.3)}
-#finale .badges{display:flex;justify-content:center;gap:6px;margin:12px 0;font-size:22px}
-#finale .badges span{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#e9c46a,#c9963f);animation:pop .5s cubic-bezier(.2,.7,.2,1.5) both}
-#finale p{font-style:italic;color:var(--ink);line-height:1.5;margin-bottom:18px}
 @media (max-width:760px){
   #closing{padding-bottom:290px}
   .couple{grid-template-columns:1fr}
@@ -402,22 +369,17 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
         <span class="n">S. Kowsalya</span>
       </div>
       <div class="hero-date" style="animation-delay:2.4s">Monday · <b>16<sup>th</sup> November 2026</b></div>
-      <a class="scroll-cue" href="#family" style="animation-delay:2.8s">Begin your quest<i></i></a>
+      <a class="scroll-cue" href="#family" style="animation-delay:2.8s">Scroll<i></i></a>
     </div>
   </div>
 </section>
 
 <!-- =================== FAMILY =================== -->
-<section id="family" style="padding-top:20px" data-quest-section>
+<section id="family" style="padding-top:20px">
   <div class="wrap">
 <div class="quest" id="q-bell" data-total="3">
   <div class="q-card">
-    <div class="q-step">Quest 2 of 5</div>
-    <h3 class="q-title">Ring the temple bell</h3>
-    <button class="q-stage" id="bellBtn" type="button" aria-label="Ring the bell"><svg class="big-bell" viewBox="0 0 30 56"><use href="#bell"/></svg><span class="ripple"></span></button>
-    <p class="q-hint">Tap the bell 3 times to receive the family’s blessings</p>
-    <div class="q-meter"><i></i></div>
-    <button class="q-skip" type="button">Skip</button>
+    <div class="q-stage" id="bellBtn" aria-hidden="true"><svg class="big-bell" viewBox="0 0 30 56"><use href="#bell"/></svg><span class="ripple"></span></div>
   </div>
 </div>
 <div class="locked-content">
@@ -434,13 +396,11 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 </section>
 
 <!-- =================== COUPLE =================== -->
-<section id="couple" style="padding-top:40px" data-quest-section>
+<section id="couple" style="padding-top:40px">
   <div class="wrap center">
 <div class="quest" id="q-lamp" data-total="5">
   <div class="q-card">
-    <div class="q-step">Quest 3 of 5</div>
-    <h3 class="q-title">Light the kuthuvilakku</h3>
-    <button class="q-stage" id="lampBtn" type="button" aria-label="Light the lamp"><svg class="lamp-svg" viewBox="0 0 200 260">
+    <div class="q-stage" id="lampBtn" aria-hidden="true"><svg class="lamp-svg" viewBox="0 0 200 260">
     <defs><linearGradient id="brass" x1="0" x2="1"><stop offset="0" stop-color="#8a5a1c"/><stop offset=".45" stop-color="#f0cf7a"/><stop offset="1" stop-color="#8a5a1c"/></linearGradient>
     <radialGradient id="flameGrad" cx=".5" cy=".75" r=".7"><stop offset="0" stop-color="#fff7d1"/><stop offset=".5" stop-color="#ffc83d"/><stop offset="1" stop-color="#ff7a00"/></radialGradient>
     <radialGradient id="lampGlow"><stop offset="0" stop-color="#ffd77a"/><stop offset="1" stop-color="#ffd77a" stop-opacity="0"/></radialGradient></defs>
@@ -453,10 +413,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     <ellipse cx="100" cy="134" rx="16" ry="8" fill="url(#brass)"/><ellipse cx="100" cy="166" rx="20" ry="9" fill="url(#brass)"/><ellipse cx="100" cy="196" rx="16" ry="8" fill="url(#brass)"/>
     <path d="M60 236 Q100 206 140 236z" fill="url(#brass)"/><ellipse cx="100" cy="240" rx="52" ry="12" fill="url(#brass)"/>
     <g class="wick" transform="translate(34 96)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(66 88)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(100 84)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(134 88)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(166 96)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g>
-  </svg></button>
-    <p class="q-hint">Tap the lamp to light all 5 wicks and meet the couple</p>
-    <div class="q-meter"><i></i></div>
-    <button class="q-skip" type="button">Skip</button>
+  </svg></div>
   </div>
 </div>
 <div class="locked-content">
@@ -489,16 +446,11 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 </section>
 
 <!-- =================== EVENTS =================== -->
-<section id="events" style="padding-top:40px" data-quest-section>
+<section id="events" style="padding-top:40px">
   <div class="wrap center">
 <div class="quest" id="q-envelope" data-total="1">
   <div class="q-card">
-    <div class="q-step">Quest 4 of 5</div>
-    <h3 class="q-title">Open the invitation</h3>
-    <div class="env" id="env"><div class="back"></div><div class="letter"><div class="caps">Save the dates</div><div class="script">15 &amp; 16 Nov</div><div class="caps">2026</div></div><div class="front"></div><div class="flap"></div><button class="seal" id="sealBtn" type="button" aria-label="Break the seal">S&amp;K</button></div>
-    <p class="q-hint">Tap the golden seal to open the envelope</p>
-    <div class="q-meter"><i></i></div>
-    <button class="q-skip" type="button">Skip</button>
+    <div class="env" id="env"><div class="back"></div><div class="letter"><div class="caps">Save the dates</div><div class="script">15 &amp; 16 Nov</div><div class="caps">2026</div></div><div class="front"></div><div class="flap"></div><span class="seal" id="sealBtn">S&amp;K</span></div>
   </div>
 </div>
 <div class="locked-content">
@@ -564,20 +516,15 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 </section>
 
 <!-- =================== CLOSING =================== -->
-<section id="closing" style="padding-top:40px" data-quest-section>
+<section id="closing" style="padding-top:40px">
   <img class="lamp" src="assets/lamp.png" alt="">
   <span class="lamp-glow" id="glow"></span>
   <img class="gopuram" src="assets/gopuram.png" alt="" style="opacity:.5">
   <div class="wrap">
 <div class="quest" id="q-akshathai" data-total="5">
   <div class="q-card">
-    <div class="q-step">Quest 5 of 5</div>
-    <h3 class="q-title">Shower your blessings</h3>
-    <div class="q-stage ak-stage" id="akStage"><div class="ak-couple" id="akCouple">S&amp;K</div>
-    <button class="ak-plate" id="plateBtn" type="button" aria-label="Throw akshathai"><svg viewBox="0 0 150 60" width="150" height="60"><ellipse cx="75" cy="40" rx="72" ry="16" fill="url(#plateG)"/><ellipse cx="75" cy="34" rx="62" ry="11" fill="#c9963f"/><ellipse cx="75" cy="30" rx="44" ry="9" fill="#f2c230"/><g fill="#b3223a"><circle cx="58" cy="28" r="3"/><circle cx="92" cy="27" r="3"/><circle cx="75" cy="24" r="3.2"/></g><defs><linearGradient id="plateG" x1="0" x2="1"><stop offset="0" stop-color="#8a5a1c"/><stop offset=".5" stop-color="#f0cf7a"/><stop offset="1" stop-color="#8a5a1c"/></linearGradient></defs></svg></button></div>
-    <p class="q-hint">Tap the plate of akshathai 5 times to bless the couple</p>
-    <div class="q-meter"><i></i></div>
-    <button class="q-skip" type="button">Skip</button>
+    <div class="q-stage ak-stage" id="akStage" aria-hidden="true"><div class="ak-couple" id="akCouple">S&amp;K</div>
+    <div class="ak-plate" id="plateBtn"><svg viewBox="0 0 150 60" width="150" height="60"><ellipse cx="75" cy="40" rx="72" ry="16" fill="url(#plateG)"/><ellipse cx="75" cy="34" rx="62" ry="11" fill="#c9963f"/><ellipse cx="75" cy="30" rx="44" ry="9" fill="#f2c230"/><g fill="#b3223a"><circle cx="58" cy="28" r="3"/><circle cx="92" cy="27" r="3"/><circle cx="75" cy="24" r="3.2"/></g><defs><linearGradient id="plateG" x1="0" x2="1"><stop offset="0" stop-color="#8a5a1c"/><stop offset=".5" stop-color="#f0cf7a"/><stop offset="1" stop-color="#8a5a1c"/></linearGradient></defs></svg></div></div>
   </div>
 </div>
 <div class="locked-content">
@@ -592,22 +539,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 <footer>G. Siddarth ♥ S. Kowsalya · 16 · 11 · 2026</footer>
 
 <button id="sound" aria-label="Music on or off" title="Music"><svg class="on-i" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.6A4 4 0 1 0 14 17V7h5V3z"/></svg><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v10.6A4 4 0 1 0 14 17V7h5V3z" fill="currentColor" stroke="none" opacity=".45"/><path d="M4 4l16 16"/></svg></button>
-<div class="toast" id="toast"></div>
-<nav id="hud" aria-label="Wedding quests"><span class="lbl">Quests</span>
-  <button type="button" data-q="door" data-t="#hero" title="Open the temple doors">🛕</button>
-  <button type="button" data-q="bell" data-t="#family" title="Ring the temple bell">🔔</button>
-  <button type="button" data-q="lamp" data-t="#couple" title="Light the lamp">🪔</button>
-  <button type="button" data-q="envelope" data-t="#events" title="Open the invitation">💌</button>
-  <button type="button" data-q="akshathai" data-t="#closing" title="Shower your blessings">🌾</button>
-  <span class="cnt" id="hudCnt">0/5</span></nav>
-<div id="finale" hidden><div class="f-card">
-  <img src="assets/ganesha.png" alt="" style="width:54px;margin:0 auto">
-  <div class="q-step">All 5 quests complete</div>
-  <h3 class="q-title">Blessings received!</h3>
-  <div class="badges"><span>🛕</span><span style="animation-delay:.1s">🔔</span><span style="animation-delay:.2s">🪔</span><span style="animation-delay:.3s">💌</span><span style="animation-delay:.4s">🌾</span></div>
-  <p>Thank you for walking this sacred journey with us. We look forward to your presence on 16<sup>th</sup> November 2026.</p>
-  <button class="btn solid" id="finaleClose" type="button">See you there</button>
-</div></div>
 
 <script>
 (() => {
@@ -721,7 +652,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     $('#sound').classList.add('show');
     setMusic(true);                       // must start inside the tap for mobile browsers
     try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
-    setTimeout(() => { $('#hud').classList.add('show'); complete('door'); toast('Quest 1 complete ✓'); }, 1800);
+    setTimeout(watchScenes, 1500);
     g.classList.add('open');
     document.body.classList.remove('locked');
     document.body.classList.add('started');
@@ -748,80 +679,42 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     chime(){ if (!ac) return; const t = ac.currentTime; [1046, 1318, 1568, 2093].forEach((f, i) => tone(f, t + i * .09, .9, .12, 'triangle')); }
   };
 
-  /* ---------- quest engine ---------- */
-  const order = ['door', 'bell', 'lamp', 'envelope', 'akshathai'];
-  const done = new Set();
-  $$('[data-quest-section]').forEach(sec => sec.classList.add('q-locked'));
-  function updateHud(){
-    const next = order.find(q => !done.has(q));
-    $$('#hud button').forEach(b => { b.classList.toggle('done', done.has(b.dataset.q)); b.classList.toggle('next', b.dataset.q === next); });
-    $('#hudCnt').textContent = done.size + '/5';
-  }
-  $$('#hud button').forEach(b => b.addEventListener('click', () => $(b.dataset.t).scrollIntoView({ behavior: 'smooth', block: 'start' })));
-  function setProgress(q, n){ q.querySelector('.q-meter i').style.width = Math.min(100, n / +q.dataset.total * 100) + '%'; }
-  function complete(id, success, skipped){
-    if (done.has(id)) return;
-    done.add(id); updateHud();
-    const q = $('#q-' + id);
-    if (q) {
-      setProgress(q, +q.dataset.total);
-      q.classList.add('done');
-      q.querySelector('.q-title').textContent = success;
-      if (!skipped) { sfx.chime(); const r = q.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, innerWidth < 700 ? 40 : 60, ['jasmine', 'rose', 'marigold']); }
-      setTimeout(() => {
-        q.classList.add('leaving');
-        setTimeout(() => {
-          const sec = q.closest('section'), content = sec.querySelector('.locked-content');
-          sec.classList.remove('q-locked'); content.classList.add('unlocked');
-          if (id === 'closing' || id === 'akshathai') placeGlow();
-        }, 550);
-      }, skipped ? 0 : 1500);
+  /* ---------- ritual scenes that play by themselves when scrolled into view ---------- */
+  const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+  const centre = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  const scenes = {
+    async bell(){
+      const b = $('#bellBtn .big-bell'), r = $('#bellBtn .ripple');
+      for (let i = 0; i < 3; i++) {
+        b.classList.remove('ring'); r.classList.remove('go'); void b.offsetWidth; b.classList.add('ring'); r.classList.add('go');
+        sfx.bell(); await wait(950);
+      }
+    },
+    async lamp(){
+      const wicks = $$('#lampBtn .wick');
+      for (const [i, k] of [2, 1, 3, 0, 4].entries()) {
+        wicks[k].classList.add('lit'); sfx.ting(i);
+        const r = wicks[k].getBoundingClientRect(); burst(r.left + r.width / 2, r.top, 6, ['marigold']);
+        await wait(480);
+      }
+    },
+    async envelope(){ await wait(400); $('#env').classList.add('open'); sfx.chime(); await wait(1500); },
+    async akshathai(){
+      const pl = $('#plateBtn'), c = $('#akCouple');
+      for (let i = 0; i < 5; i++) {
+        pl.classList.remove('toss'); c.classList.remove('blessed'); void pl.offsetWidth; pl.classList.add('toss'); c.classList.add('blessed');
+        const r = pl.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + 10, 30, ['rice', 'rice', 'rice', 'rose', 'jasmine'], true);
+        sfx.ting(i); await wait(520);
+      }
     }
-    if (done.size === order.length) setTimeout(finale, skipped ? 600 : 2600);
-  }
-  function finale(){
-    $('#finale').hidden = false; sfx.bell(); shower();
-  }
-  $('#finaleClose').addEventListener('click', () => { $('#finale').hidden = true; });
-  $$('.quest').forEach(q => q.querySelector('.q-skip').addEventListener('click', () => {
-    const id = q.id.slice(2);
-    complete(id, { bell: 'Blessings received', lamp: 'The lamp is lit', envelope: 'Invitation opened', akshathai: 'Blessings showered' }[id], true);
-  }));
-
-  // Quest 2: ring the bell
-  let rings = 0;
-  $('#bellBtn').addEventListener('click', () => {
-    const b = $('#bellBtn .big-bell'), r = $('#bellBtn .ripple');
-    b.classList.remove('ring'); r.classList.remove('go'); void b.offsetWidth; b.classList.add('ring'); r.classList.add('go');
-    sfx.bell(); rings++; setProgress($('#q-bell'), rings);
-    if (rings >= 3) complete('bell', 'Blessings received');
-  });
-  // Quest 3: light the lamp, one wick per tap
-  let lit = 0;
-  const wickEls = $$('#lampBtn .wick');
-  $('#lampBtn').addEventListener('click', () => {
-    if (lit >= wickEls.length) return;
-    const w = wickEls[[2, 1, 3, 0, 4][lit]];
-    w.classList.add('lit'); sfx.ting(lit); lit++;
-    const r = w.getBoundingClientRect(); burst(r.left + r.width / 2, r.top, 6, ['marigold']);
-    setProgress($('#q-lamp'), lit);
-    if (lit === wickEls.length) setTimeout(() => complete('lamp', 'The lamp is lit'), 500);
-  });
-  // Quest 4: break the seal
-  $('#sealBtn').addEventListener('click', () => {
-    $('#env').classList.add('open'); sfx.chime();
-    setTimeout(() => complete('envelope', 'Invitation opened'), 1500);
-  });
-  // Quest 5: shower akshathai on the couple
-  let throws = 0;
-  $('#plateBtn').addEventListener('click', () => {
-    const pl = $('#plateBtn'), c = $('#akCouple');
-    pl.classList.remove('toss'); c.classList.remove('blessed'); void pl.offsetWidth; pl.classList.add('toss'); c.classList.add('blessed');
-    const r = pl.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + 10, 34, ['rice', 'rice', 'rice', 'rose', 'jasmine'], true);
-    sfx.ting(throws); throws++; setProgress($('#q-akshathai'), throws);
-    if (throws >= 5) setTimeout(() => complete('akshathai', 'Blessings showered'), 700);
-  });
-  updateHud();
+  };
+  const sceneIO = new IntersectionObserver(es => es.forEach(async e => {
+    if (!e.isIntersecting || !document.body.classList.contains('started')) return;
+    sceneIO.unobserve(e.target);
+    await scenes[e.target.id.slice(2)]();
+    if (!reduce) { sfx.chime(); const [x, y] = centre(e.target); burst(x, y, innerWidth < 700 ? 34 : 50, ['jasmine', 'rose', 'marigold']); }
+  }), { threshold: 0.55 });
+  const watchScenes = () => $$('.quest').forEach(q => { sceneIO.unobserve(q); sceneIO.observe(q); });
 
   /* countdown */
   const target = new Date('2026-11-16T06:00:00+05:30').getTime();
@@ -868,7 +761,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     $('#map').innerHTML = `<iframe title="Venue map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${q}&z=15&output=embed"></iframe>`; } },
     { rootMargin: '400px' }).observe($('#map'));
 
-  function toast(t){ const el = $('#toast'); el.textContent = t; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2200); }
 })();
 </script>
 </body>
