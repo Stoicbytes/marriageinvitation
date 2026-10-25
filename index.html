@@ -558,29 +558,14 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
   addEventListener('resize', () => { size(); fitArch(); placeGlow(); });
   document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) frame(); });
 
-  /* soft veena-style melody (raga Mayamalavagowla) over a tanpura drone */
-  let ac, musicOn = false, timer;
-  const notes = [261.6, 277.2, 329.6, 349.2, 392.0, 415.3, 493.9, 523.3];
-  const tune = [0,2,3,4, 5,4,3,2, 3,4,5,7, 6,5,4,4, 4,5,7,6, 5,4,3,2, 1,2,3,2, 1,0,0,0];
-  function pluck(f, t, g = .16, len = 1.8){
-    const o = ac.createOscillator(), o2 = ac.createOscillator(), v = ac.createGain(), lp = ac.createBiquadFilter();
-    o.type = 'triangle'; o2.type = 'sine'; o.frequency.value = f; o2.frequency.value = f * 2.003;
-    o.frequency.setValueAtTime(f * 0.985, t); o.frequency.linearRampToValueAtTime(f, t + .08); // gentle gamaka slide
-    lp.type = 'lowpass'; lp.frequency.value = 2400;
-    v.gain.setValueAtTime(0, t); v.gain.linearRampToValueAtTime(g, t + .01); v.gain.exponentialRampToValueAtTime(.0008, t + len);
-    o.connect(lp); o2.connect(lp); lp.connect(v); v.connect(ac.destination);
-    o.start(t); o2.start(t); o.stop(t + len + .1); o2.stop(t + len + .1);
-  }
-  function bell(){ const t = ac.currentTime; [523, 1046, 1568, 2093, 2637].forEach((f, i) => pluck(f, t + i * .008, .14 / (i + 1), 3)); }
-  function playLoop(){
-    const t = ac.currentTime + .1, step = .48;
-    tune.forEach((n, i) => pluck(notes[n], t + i * step));
-    for (let i = 0; i < tune.length; i += 4) { pluck(130.8, t + i * step, .07, 2.4); pluck(196, t + (i + 2) * step, .05, 2.4); }
-    timer = setTimeout(playLoop, tune.length * step * 1000);
-  }
+  /* festive Tamil wedding music (nadaswaram, thavil and a modern groove) */
+  const music = new Audio('assets/music.mp3');
+  music.loop = true; music.preload = 'auto'; music.volume = 0.8;
+  let musicOn = false;
   function setMusic(on){
     musicOn = on; $('#sound').classList.toggle('on', on);
-    if (on) { ac.resume(); playLoop(); } else { clearTimeout(timer); ac.suspend(); }
+    if (on) music.play().catch(() => { musicOn = false; $('#sound').classList.remove('on'); });
+    else music.pause();
   }
   $('#sound').addEventListener('click', () => setMusic(!musicOn));
   $('#vid').addEventListener('play', () => { if (musicOn) setMusic(false); });
@@ -588,14 +573,14 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
   /* open gate */
   function openGate(){
     const g = $('#gate'); if (g.classList.contains('open')) return;
-    try { ac = new (window.AudioContext || window.webkitAudioContext)(); bell(); } catch (e) {}
+    $('#sound').classList.add('show');
+    setMusic(true);                       // must start inside the tap for mobile browsers
     g.classList.add('open');
     document.body.classList.remove('locked');
     document.body.classList.add('started');
     fitArch();
     if (!reduce) shower();
     setTimeout(() => g.classList.add('gone'), 2300);
-    if (ac) { $('#sound').classList.add('show'); setTimeout(() => setMusic(true), 1200); }
   }
   $('#gate').addEventListener('click', openGate);
   $('#gate').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGate(); } });
