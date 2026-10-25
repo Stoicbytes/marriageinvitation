@@ -39,7 +39,7 @@ h, w = 620, 335
 yy, xx = np.mgrid[0:h, 0:w]
 erase = ((xx > 220) & (yy > 112)) | ((xx > 148) & (yy > 228)) | ((xx < 37) & (yy > 335))
 keep = soft(1-erase, 5) * (1 - erase) * edge_fade(h, w, bottom=60, right=45)
-save(cut(a[0:h, 0:w], keep, lo=np.where(yy > 300, 34, 26), hi=np.where(yy > 300, 54, 48)), 'garland')
+save(cut(a[0:h, 0:w], keep, lo=np.where(yy > 300, 42, 26), hi=np.where(yy > 300, 62, 48)), 'garland')
 
 # lamp + flowers + steps
 h, w = 536, 330
