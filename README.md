@@ -1,18 +1,30 @@
-# Siddarth ♥ Kowsalya — Wedding Invitation
+# G. Siddarth ♥ S. Kowsalya — Wedding Invitation
 
-A single-page, animated wedding invitation website (works on mobile and desktop), made to be shared as a WhatsApp link.
+A traditional, animated wedding invitation website (mobile and desktop) plus a WhatsApp-ready invitation video.
 
-- **Muhurtham:** Monday, 16 November 2026, 6:00–7:30 AM
+- **Wedding (Muhurtham):** Monday, 16 November 2026, 6:00–7:30 AM
 - **Reception:** Sunday, 15 November 2026, 6:30 PM onwards
 - **Venue:** Manjula Mahal A/C Thirumana Mandapam, Poonamallee – Avadi High Road, Opp. Vivekanandha School, Avadi, Chennai
 
-## Features
-Temple doors that open on tap (with a bell chime and a burst of flower petals), a swaying mango-leaf toran, a story told in chapters with two paths that draw themselves as you scroll and meet at the end, a code-typing chapter for the two engineers, event cards with Google/Apple calendar buttons, a live countdown, a venue map with directions, WhatsApp sharing, and soft background music (it can be muted).
+## What's inside
+- `index.html` — the website. Carved temple doors open with a bell chime, jasmine garlands and brass bells sway, a temple arch draws itself around the names, jasmine and rose petals fall, a kuthuvilakku glows. Sections: blessings, parents, the couple, reception and wedding (with calendar buttons), countdown, invitation video, venue with map and directions, and WhatsApp sharing. Soft veena music plays after opening (can be muted).
+- `assets/invitation.mp4` — 47-second vertical (720×1280) invitation video with music, about 5 MB, to send directly on WhatsApp or post as a status.
+- `og.jpg` — the preview image WhatsApp shows when the link is shared.
 
 ## Personalised links
-Add `?to=Name` to the link to greet a guest by name on the opening screen, e.g.
+Add `?to=Name` to greet a guest by name on the opening screen, for example
 `https://stoicbytes-studio.github.io/marriageinvitation/?to=Ravi%20Family`
 
 ## Hosting (GitHub Pages)
 Settings → Pages → Build and deployment → Source: *Deploy from a branch* → `main` / `(root)`.
 The site is then live at https://stoicbytes-studio.github.io/marriageinvitation/
+
+## Rebuilding the video
+`video-src/` holds the scene (`video.html`), the frame renderer (`render.js`, Playwright), the soundtrack synthesiser (`music.py`) and the script that cut the decorative assets from the design (`extract_assets.py`).
+
+```sh
+node video-src/render.js /tmp/frames 30
+python3 video-src/music.py /tmp/music.wav 47
+ffmpeg -framerate 30 -i /tmp/frames/%05d.jpg -i /tmp/music.wav -c:v libx264 -crf 24 -pix_fmt yuv420p \
+  -c:a aac -b:a 128k -shortest -movflags +faststart assets/invitation.mp4
+```
