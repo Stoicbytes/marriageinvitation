@@ -249,22 +249,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 
 /* ---------- QUESTS ---------- */
 .q-card{position:relative;max-width:440px;margin:0 auto 40px;padding:44px 22px 30px;text-align:center;background:var(--paper-l);border:1.5px solid var(--gold);border-radius:180px 180px 18px 18px;box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 26px 50px #7a5a3e2e;transition:opacity .6s, transform .6s}
-/* bell */
-.big-bell{width:84px;height:156px;transform-origin:50% 0;overflow:visible}
-.big-bell.ring{animation:bigRing 1s ease-out}
-@keyframes bigRing{0%{transform:rotate(0)}15%{transform:rotate(22deg)}35%{transform:rotate(-17deg)}55%{transform:rotate(11deg)}75%{transform:rotate(-6deg)}100%{transform:rotate(0)}}
-.ripple{position:absolute;left:50%;top:78%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:2px solid var(--gold);opacity:0;pointer-events:none}
-.ripple.go{animation:ripple .9s ease-out}
-@keyframes ripple{from{opacity:.9;transform:scale(.5)}to{opacity:0;transform:scale(4)}}
-
-/* lamp */
-.lamp-svg{width:min(62vw,230px);height:auto;overflow:visible}
-.lamp-svg .fl{transform-box:fill-box;transform-origin:50% 100%;transform:scale(0);transition:transform .5s cubic-bezier(.2,.7,.2,1.5)}
-.lamp-svg .lit .fl{transform:scale(1);animation:flick 1.2s ease-in-out infinite alternate}
-.lamp-svg .gl{opacity:0;transition:opacity .6s}
-.lamp-svg .lit .gl{opacity:.85}
-.lamp-svg .wick:nth-child(2) .fl{animation-delay:-.3s}.lamp-svg .wick:nth-child(3) .fl{animation-delay:-.6s}.lamp-svg .wick:nth-child(4) .fl{animation-delay:-.9s}
-@keyframes flick{0%{transform:scale(1,1) rotate(-3deg)}100%{transform:scale(.9,1.12) rotate(3deg)}}
 
 /* envelope */
 .env{position:relative;width:min(80vw,300px);aspect-ratio:3/2;margin:10px auto 6px;perspective:900px}
@@ -286,14 +270,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 .env.open .flap{transform:rotateX(180deg);z-index:0}
 .env.open .letter{transform:translateY(-58%)}
 
-/* akshathai */
-.ak-stage{width:100%;max-width:340px;height:250px;margin:0 auto}
-.ak-couple{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:110px;height:110px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fbf1de,#f1dbb2);border:1.5px solid var(--gold);box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66;font-family:var(--script);font-size:38px;color:var(--maroon)}
-.ak-couple.blessed{animation:glowC 1s ease-out}
-@keyframes glowC{0%{box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 0 0 0 #ffd77a}50%{box-shadow:0 0 0 6px var(--paper-l),0 0 0 7px #b07a2a66,0 0 40px 18px #ffd77acc}}
-.ak-plate{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:150px;height:60px}
-.ak-plate.toss{animation:toss .35s ease-out}
-@keyframes toss{40%{transform:translateX(-50%) translateY(-12px) rotate(-6deg)}}
 
 @media (max-width:760px){
   #closing{padding-bottom:290px}
@@ -381,11 +357,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 <!-- =================== FAMILY =================== -->
 <section id="family" style="padding-top:20px">
   <div class="wrap">
-<div class="quest" id="q-bell" data-total="3">
-  <div class="q-card">
-    <div class="q-stage" id="bellBtn" aria-hidden="true"><svg class="big-bell" viewBox="0 0 30 56"><use href="#bell"/></svg><span class="ripple"></span></div>
-  </div>
-</div>
+
 <div class="locked-content">
     <div class="card reveal zoom">
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
@@ -402,24 +374,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
 <!-- =================== COUPLE =================== -->
 <section id="couple" style="padding-top:40px">
   <div class="wrap center">
-<div class="quest" id="q-lamp" data-total="5">
-  <div class="q-card">
-    <div class="q-stage" id="lampBtn" aria-hidden="true"><svg class="lamp-svg" viewBox="0 0 200 260">
-    <defs><linearGradient id="brass" x1="0" x2="1"><stop offset="0" stop-color="#8a5a1c"/><stop offset=".45" stop-color="#f0cf7a"/><stop offset="1" stop-color="#8a5a1c"/></linearGradient>
-    <radialGradient id="flameGrad" cx=".5" cy=".75" r=".7"><stop offset="0" stop-color="#fff7d1"/><stop offset=".5" stop-color="#ffc83d"/><stop offset="1" stop-color="#ff7a00"/></radialGradient>
-    <radialGradient id="lampGlow"><stop offset="0" stop-color="#ffd77a"/><stop offset="1" stop-color="#ffd77a" stop-opacity="0"/></radialGradient></defs>
-    <path d="M100 4c6 8 8 14 0 24-8-10-6-16 0-24z" fill="url(#brass)"/>
-    <rect x="95" y="28" width="10" height="44" rx="4" fill="url(#brass)"/>
-    <ellipse cx="100" cy="74" rx="14" ry="6" fill="url(#brass)"/>
-    <path d="M24 90 Q100 128 176 90 Q170 112 100 116 Q30 112 24 90z" fill="url(#brass)"/>
-    <ellipse cx="100" cy="90" rx="76" ry="10" fill="#c9963f"/><ellipse cx="100" cy="90" rx="68" ry="6" fill="#7a4a14" opacity=".55"/>
-    <rect x="93" y="114" width="14" height="100" fill="url(#brass)"/>
-    <ellipse cx="100" cy="134" rx="16" ry="8" fill="url(#brass)"/><ellipse cx="100" cy="166" rx="20" ry="9" fill="url(#brass)"/><ellipse cx="100" cy="196" rx="16" ry="8" fill="url(#brass)"/>
-    <path d="M60 236 Q100 206 140 236z" fill="url(#brass)"/><ellipse cx="100" cy="240" rx="52" ry="12" fill="url(#brass)"/>
-    <g class="wick" transform="translate(34 96)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(66 88)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(100 84)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(134 88)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g><g class="wick" transform="translate(166 96)"><circle class="gl" r="16" fill="url(#lampGlow)"/><path class="fl" d="M0 0c-6-5-7-13 0-24 7 11 6 19 0 24z" fill="url(#flameGrad)"/><circle r="2.4" fill="#5a3a12"/></g>
-  </svg></div>
-  </div>
-</div>
+
 <div class="locked-content">
     <div class="eyebrow reveal">Two families · One sacred bond</div>
     <h2 class="title reveal d1">The Couple</h2>
@@ -526,12 +481,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
   <span class="lamp-glow" id="glow"></span>
   <img class="gopuram" src="assets/gopuram.png" alt="" style="opacity:.5">
   <div class="wrap">
-<div class="quest" id="q-akshathai" data-total="5">
-  <div class="q-card">
-    <div class="q-stage ak-stage" id="akStage" aria-hidden="true"><div class="ak-couple" id="akCouple">S&amp;K</div>
-    <div class="ak-plate" id="plateBtn"><svg viewBox="0 0 150 60" width="150" height="60"><ellipse cx="75" cy="40" rx="72" ry="16" fill="url(#plateG)"/><ellipse cx="75" cy="34" rx="62" ry="11" fill="#c9963f"/><ellipse cx="75" cy="30" rx="44" ry="9" fill="#f2c230"/><g fill="#b3223a"><circle cx="58" cy="28" r="3"/><circle cx="92" cy="27" r="3"/><circle cx="75" cy="24" r="3.2"/></g><defs><linearGradient id="plateG" x1="0" x2="1"><stop offset="0" stop-color="#8a5a1c"/><stop offset=".5" stop-color="#f0cf7a"/><stop offset="1" stop-color="#8a5a1c"/></linearGradient></defs></svg></div></div>
-  </div>
-</div>
+
 <div class="locked-content">
     <div class="lotus-div reveal"><svg><use href="#lotus"/></svg></div>
     <div class="special reveal d1">Your presence will make<br>our day more special</div>
@@ -657,7 +607,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     $('#sound').classList.add('show');
     setMusic(true);                       // must start inside the tap for mobile browsers
     try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
-    setTimeout(watchScenes, 1500);
     g.classList.add('open');
     document.body.classList.remove('locked');
     document.body.classList.add('started');
@@ -679,45 +628,12 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     o.connect(v); v.connect(ac.destination); o.start(t); o.stop(t + len + .05);
   }
   const sfx = {
-    bell(){ if (!ac) return; const t = ac.currentTime; [[1318, .22, 2.2], [2636, .09, 1.4], [3954, .04, .8]].forEach(([f, g, l]) => tone(f, t, l, g)); },
-    ting(i){ if (!ac) return; tone([1046, 1174, 1318, 1568, 1760][i % 5], ac.currentTime, .6, .14, 'triangle'); },
     chime(){ if (!ac) return; const t = ac.currentTime; [1046, 1318, 1568, 2093].forEach((f, i) => tone(f, t + i * .09, .9, .12, 'triangle')); }
   };
 
-  /* ---------- ritual scenes that play by themselves when scrolled into view ---------- */
-  const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
   const centre = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
-  const scenes = {
-    async bell(){
-      const b = $('#bellBtn .big-bell'), r = $('#bellBtn .ripple');
-      for (let i = 0; i < 3; i++) {
-        b.classList.remove('ring'); r.classList.remove('go'); void b.offsetWidth; b.classList.add('ring'); r.classList.add('go');
-        sfx.bell(); await wait(950);
-      }
-    },
-    async lamp(){
-      const wicks = $$('#lampBtn .wick');
-      for (const [i, k] of [2, 1, 3, 0, 4].entries()) {
-        wicks[k].classList.add('lit'); sfx.ting(i);
-        const r = wicks[k].getBoundingClientRect(); burst(r.left + r.width / 2, r.top, 6, ['marigold']);
-        await wait(480);
-      }
-    },
-    async akshathai(){
-      const pl = $('#plateBtn'), c = $('#akCouple');
-      for (let i = 0; i < 5; i++) {
-        pl.classList.remove('toss'); c.classList.remove('blessed'); void pl.offsetWidth; pl.classList.add('toss'); c.classList.add('blessed');
-        const r = pl.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + 10, 30, ['rice', 'rice', 'rice', 'rose', 'jasmine'], true);
-        sfx.ting(i); await wait(520);
-      }
-    }
-  };
-  const sceneIO = new IntersectionObserver(es => es.forEach(async e => {
-    if (!e.isIntersecting || !document.body.classList.contains('started')) return;
-    sceneIO.unobserve(e.target);
-    await scenes[e.target.id.slice(2)]();
-    if (!reduce) { sfx.chime(); const [x, y] = centre(e.target); burst(x, y, innerWidth < 700 ? 34 : 50, ['jasmine', 'rose', 'marigold']); }
-  }), { threshold: 0.55 });
+
+  /* the invitation envelope opens when the guest taps it */
   function openEnvelope(){
     const env = $('#env'); if (env.classList.contains('open')) return;
     env.classList.add('open'); $('#envHint').classList.add('hide'); sfx.chime();
@@ -725,7 +641,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
   }
   $('#env').addEventListener('click', openEnvelope);
   $('#env').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); } });
-  const watchScenes = () => $$('.quest:not(#q-envelope)').forEach(q => { sceneIO.unobserve(q); sceneIO.observe(q); });
 
   /* countdown */
   const target = new Date('2026-11-16T06:00:00+05:30').getTime();
