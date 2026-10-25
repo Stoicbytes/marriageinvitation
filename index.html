@@ -217,11 +217,6 @@ section{position:relative;padding:clamp(80px,11vw,140px) 20px;overflow:hidden}
 .unit span{font-family:var(--caps);font-size:10px;letter-spacing:.2em;color:var(--muted)}
 .married{display:none;font-family:var(--script);font-size:clamp(46px,8vw,72px);color:var(--maroon)}
 
-/* ---------- video ---------- */
-.video-box{position:relative;max-width:380px;margin:30px auto 0;padding:10px;border:1.5px solid var(--gold);border-radius:200px 200px 16px 16px;background:var(--paper-l);box-shadow:0 30px 60px #7a5a3e33}
-.video-box video{display:block;width:100%;aspect-ratio:9/16;border-radius:190px 190px 10px 10px;background:var(--paper-d);object-fit:cover}
-.video-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
-
 /* ---------- venue ---------- */
 .venue{display:grid;grid-template-columns:1fr 1.1fr;border:1px solid var(--gold);background:var(--paper-l);border-radius:18px;overflow:hidden;margin-top:30px;box-shadow:0 30px 60px #7a5a3e26}
 .venue .info{padding:clamp(28px,5vw,50px);text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center}
@@ -422,20 +417,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
   </div>
 </section>
 
-<!-- =================== VIDEO =================== -->
-<section id="video" style="padding-top:40px">
-  <div class="wrap center">
-    <div class="eyebrow reveal">A glimpse of our invitation</div>
-    <h2 class="title reveal d1">Invitation Video</h2>
-    <div class="video-box reveal zoom d2">
-      <video id="vid" src="assets/invitation.mp4" poster="assets/video-poster.jpg" controls playsinline preload="none"></video>
-    </div>
-    <div class="video-actions reveal d3">
-      <a class="btn solid" href="assets/invitation.mp4" download="Siddarth-Kowsalya-Invitation.mp4">Download video</a>
-    </div>
-  </div>
-</section>
-
 <!-- =================== VENUE =================== -->
 <section id="venue" style="padding-top:40px">
   <img class="gopuram" src="assets/gopuram.png" alt="" style="opacity:.35">
@@ -568,7 +549,6 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     else music.pause();
   }
   $('#sound').addEventListener('click', () => setMusic(!musicOn));
-  $('#vid').addEventListener('play', () => { if (musicOn) setMusic(false); });
 
   /* open gate */
   function openGate(){
