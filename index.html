@@ -537,7 +537,7 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     const r = Math.random();
     return { kind: r < .55 ? 'jasmine' : r < .85 ? 'rose' : 'marigold',
       x: Math.random() * W, y: top ? -20 * dpr : Math.random() * H, s: (0.7 + Math.random() * .6) * dpr,
-      vy: (0.45 + Math.random() * .9) * dpr, vx: (Math.random() - .5) * .5 * dpr,
+      vy: (0.45 + Math.random() * .9) * dpr * (reduce ? .5 : 1), vx: (Math.random() - .5) * .5 * dpr,
       a: Math.random() * 6.28, va: (Math.random() - .5) * .04, sw: Math.random() * 6.28 };
   }
   function drawItem(p){
@@ -573,7 +573,8 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     }
     requestAnimationFrame(frame);
   }
-  const base = () => reduce ? 0 : (innerWidth < 700 ? 16 : 28);
+  // petals stay on even with Reduce Motion, just fewer and slower
+  const base = () => reduce ? (innerWidth < 700 ? 14 : 20) : (innerWidth < 700 ? 26 : 34);
   function shower(){
     for (let i = 0; i < (innerWidth < 700 ? 50 : 90); i++) { const p = mk(false); p.y = -Math.random() * H * .8; p.vy *= 1.6; items.push(p); }
     setTimeout(() => items.splice(0, items.length - base()), 12000);
