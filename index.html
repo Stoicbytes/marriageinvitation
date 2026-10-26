@@ -601,6 +601,12 @@ footer{background:var(--maroon-d);color:var(--gold-xl);text-align:center;font-fa
     else music.pause();
   }
   $('#sound').addEventListener('click', () => setMusic(!musicOn));
+  // pause when the browser is minimised or the tab is hidden; resume on return if it was playing
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) music.pause();
+    else if (musicOn) music.play().catch(() => setMusic(false));
+  });
+  addEventListener('pagehide', () => music.pause());
 
   /* open gate */
   function openGate(){
